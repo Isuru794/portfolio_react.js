@@ -56,32 +56,7 @@ const About = () => {
     requestAnimationFrame(updateCount);
   };
 
-  // Intersection Observer for stats animation
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            // Start counting animations
-            animateCount(50, (value) => setStats(prev => ({ ...prev, projects: value })), 2000);
-            animateCount(3, (value) => setStats(prev => ({ ...prev, experience: value })), 1500);
-            animateCount(100, (value) => setStats(prev => ({ ...prev, satisfaction: value })), 1800);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
-
-    return () => {
-      if (statsRef.current) {
-        observer.unobserve(statsRef.current);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     intervalRef.current = setInterval(startAnimation, 5000);
@@ -153,31 +128,13 @@ const About = () => {
               creating seamless user experiences with cutting-edge technologies.
             </motion.p>
 
-            {/* Stats */}
-            <motion.div 
-              className="about-stats" 
-              variants={itemVariants}
-              ref={statsRef}
-            >
-              <div className="stat">
-                <span className="stat-number">{stats.projects}+</span>
-                <span className="stat-label">Projects Completed</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">{stats.experience}+</span>
-                <span className="stat-label">Years Experience</span>
-              </div>
-              <div className="stat">
-                <span className="stat-number">{stats.satisfaction}%</span>
-                <span className="stat-label">Client Satisfaction</span>
-              </div>
-            </motion.div>
+           
 
             {/* Skills */}
             <motion.div className="skills-section" variants={itemVariants}>
               <h3 className="skills-title">Technologies I Work With</h3>
               <div className="skills-grid">
-                {['React', 'Node.js', 'JavaScript', 'TypeScript', 'Python', 'MongoDB', 'Express', 'Next.js'].map((skill, index) => (
+                {['React', 'Laravel', 'JavaScript',  'MySQL', 'PHP', 'Wordpress'].map((skill, index) => (
                   <motion.span 
                     key={skill}
                     className="skill-tag"
