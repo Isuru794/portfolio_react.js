@@ -596,3 +596,16 @@
     height: 45px;
   }
 }
+
+/* Temporary debug styles - add to App.css */
+#skills {
+  border: 3px solid red !important;
+  min-height: 100px;
+  background: yellow !important;
+}
+
+#education-experience {
+  border: 3px solid blue !important;
+  min-height: 100px;
+  background: lightblue !important;
+}
